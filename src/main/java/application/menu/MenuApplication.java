@@ -11,9 +11,6 @@ public class MenuApplication {
 
 		SpringApplication.run(MenuApplication.class, args);
 
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-
-		ME
 	}
 
 }

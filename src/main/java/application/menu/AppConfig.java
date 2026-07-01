@@ -1,30 +1,15 @@
 package application.menu;
 
-import application.menu.entities.Drink;
-import application.menu.entities.Menu;
-import application.menu.entities.Pizza;
-import application.menu.entities.Topping;
+import application.menu.entities.*;
 import application.menu.enums.DrinkSize;
 import application.menu.enums.PizzaSize;
+import application.menu.enums.TableStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Configuration
 public class AppConfig {
-
-
-    // MENU
-
-    @Bean
-    public Menu menu(List<Pizza> pizzas,
-                     List<Topping> toppings,
-                     List<Drink> drinks) {
-        return new Menu(pizzas, toppings, drinks);
-    }
 
 
     // PIZZE
@@ -39,14 +24,15 @@ public class AppConfig {
         return new Pizza("Pizza Salami", PizzaSize.NORMAL, salami());
     }
 
-    @Bean Pizza pizzaHawaii() {
+    @Bean
+    public Pizza pizzaHawaii() {
         return new Pizza("Pizza Hawaii", PizzaSize.NORMAL, pineapple());
     }
 
-    @Bean Pizza pizzaCottoEFunghi() {
-        return new Pizza("Pizza Romana", PizzaSize.NORMAL, ham(), mushrooms());
+    @Bean
+    public Pizza pizzaCottoFunghi() { return new Pizza("Pizza Romana", PizzaSize.NORMAL, ham(), mushrooms()); }
 
-    }
+
 
     // TOPPING
 
@@ -81,13 +67,14 @@ public class AppConfig {
     }
 
     @Bean
-        public Topping pineapple() {
+    public Topping pineapple() {
         return new Topping("Pineapple", 0.50, 25);
     }
 
 
 
-    // DRKIK
+    // DRINK
+
     @Bean
     public Drink cocaCola() {
         return new Drink("Coca Cola", 2, 200, DrinkSize.CL33, false, 0);
@@ -109,6 +96,21 @@ public class AppConfig {
     }
 
 
+
+
+    // TABLES
+
+    @Bean
+    public Table table1() { return new Table(1, 4, TableStatus.FREE); }
+
+    @Bean
+    public Table table2() { return new Table(2, 6, TableStatus.FREE); }
+
+    @Bean
+    public Table table3() { return new Table(3, 8, TableStatus.FREE); }
+
+    @Bean
+    public Table table4() { return new Table(4, 10, TableStatus.FREE); }
     
 
 
